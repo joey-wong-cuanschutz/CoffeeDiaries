@@ -25,7 +25,7 @@ public interface CoffeeRecordDao {
 
 //    update record
     @Update
-    void updateRecord(CoffeeRecordsEntity coffeeRecordsEntity)
+    void updateRecord(CoffeeRecordsEntity coffeeRecordsEntity);
 
 //    select 1 record by id
 }
