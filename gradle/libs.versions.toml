@@ -12,6 +12,7 @@ navigationFragment = "2.6.0"
 navigationUi = "2.6.0"
 roomCompiler = "2.7.2"
 roomRuntime = "2.7.2"
+roomCommonJvm = "2.7.2"
 
 [libraries]
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
@@ -26,6 +27,7 @@ lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-view
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
