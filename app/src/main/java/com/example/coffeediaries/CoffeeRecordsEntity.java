@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class CoffeeRecordsDB {
+public class CoffeeRecordsEntity {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="id")
     private int id;
@@ -34,7 +34,7 @@ public class CoffeeRecordsDB {
     @ColumnInfo(name = "comment")
     private String comment;
 
-    public CoffeeRecordsDB(String brewDate, String brewMethod, String coffeeName, String brewTime, double gramsCoffee, double calories, double rating, String comment) {
+    public CoffeeRecordsEntity(String brewDate, String brewMethod, String coffeeName, String brewTime, double gramsCoffee, double calories, double rating, String comment) {
         this.id = 0;
         this.brewDate = brewDate;
         this.brewMethod = brewMethod;
