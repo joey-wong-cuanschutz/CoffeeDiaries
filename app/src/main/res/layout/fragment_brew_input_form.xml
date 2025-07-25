@@ -10,110 +10,12 @@
         android:id="@+id/brewInputHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="@string/brew_input_header"
         android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewDateLabel"
+        app:layout_constraintBottom_toTopOf="@+id/brewDateInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
-
-    <TextView
-        android:id="@+id/brewDateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/brew_date_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewMethodLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brewInputHeader" />
-
-    <TextView
-        android:id="@+id/brewMethodLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/brew_method_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/coffeeNameLabel"
-        app:layout_constraintEnd_toEndOf="@+id/brewDateLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/brewDateLabel"
-        app:layout_constraintTop_toBottomOf="@+id/brewDateLabel" />
-
-    <TextView
-        android:id="@+id/coffeeNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/brew_name_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewTimeLabel"
-        app:layout_constraintEnd_toEndOf="@+id/brewMethodLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/brewMethodLabel"
-        app:layout_constraintTop_toBottomOf="@+id/brewMethodLabel" />
-
-    <TextView
-        android:id="@+id/brewTimeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/brew_time_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewGramsCoffeeLabel"
-        app:layout_constraintEnd_toEndOf="@+id/coffeeNameLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/coffeeNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/coffeeNameLabel" />
-
-    <TextView
-        android:id="@+id/brewGramsCoffeeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/brew_grams_coffee_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewCaloriesLabel"
-        app:layout_constraintEnd_toEndOf="@+id/brewTimeLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/brewTimeLabel"
-        app:layout_constraintTop_toBottomOf="@+id/brewTimeLabel" />
-
-    <TextView
-        android:id="@+id/brewCommentLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:text="@string/brew_comment_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/brewRatingLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/brewRatingLabel"
-        app:layout_constraintTop_toBottomOf="@+id/brewRatingLabel" />
-
-    <TextView
-        android:id="@+id/brewRatingLabel"
-        android:layout_width="47dp"
-        android:layout_height="24dp"
-        android:text="@string/brew_rating_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewCommentLabel"
-        app:layout_constraintEnd_toEndOf="@+id/brewCaloriesLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/brewCaloriesLabel"
-        app:layout_constraintTop_toBottomOf="@+id/brewCaloriesLabel" />
-
-    <TextView
-        android:id="@+id/brewCaloriesLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/brew_calories_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/brewRatingLabel"
-        app:layout_constraintEnd_toEndOf="@+id/brewGramsCoffeeLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/brewGramsCoffeeLabel"
-        app:layout_constraintTop_toBottomOf="@+id/brewGramsCoffeeLabel" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -129,24 +31,22 @@
         android:hint="@string/brew_date_input_hint"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/brewDateLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toEndOf="@+id/brewDateLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewMethodInput"
         app:layout_constraintTop_toTopOf="@+id/brewDateLabel"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/brewMethodInput"
+    <TextView
+        android:id="@+id/coffeeNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="brew method"
+        android:text="@string/brew_name_label"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/brewMethodLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toEndOf="@+id/brewMethodLabel"
-        app:layout_constraintTop_toTopOf="@+id/brewMethodLabel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/brewTimeLabel"
+        app:layout_constraintEnd_toEndOf="@+id/brewMethodLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brewMethodLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brewMethodLabel" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewCoffeeNameInput"
@@ -155,23 +55,49 @@
         android:hint="brew coffee name"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/coffeeNameLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toEndOf="@+id/coffeeNameLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewTimeInput"
         app:layout_constraintTop_toTopOf="@+id/coffeeNameLabel"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/brewTimeInput"
+        android:id="@+id/brewCommentInput"
+        android:layout_width="144dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="100dp"
+        android:hint="brew Comment"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewCommentLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintStart_toEndOf="@+id/brewCommentLabel"
+        app:layout_constraintTop_toTopOf="@+id/brewCommentLabel"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/brewDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="brew time in seconds"
+        android:text="@string/brew_date_label"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/brewTimeLabel"
+        app:layout_constraintBottom_toTopOf="@+id/brewMethodLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.654"
-        app:layout_constraintStart_toEndOf="@+id/brewTimeLabel"
-        app:layout_constraintTop_toTopOf="@+id/brewTimeLabel"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/brewCaloriesInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="brew calories"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewCaloriesLabel"
+        app:layout_constraintStart_toEndOf="@+id/brewCaloriesLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewRatingInput"
+        app:layout_constraintTop_toTopOf="@+id/brewCaloriesLabel"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -181,24 +107,46 @@
         android:hint="brew grams of coffee"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/brewGramsCoffeeLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toEndOf="@+id/brewGramsCoffeeLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewCaloriesInput"
         app:layout_constraintTop_toTopOf="@+id/brewGramsCoffeeLabel"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/brewCaloriesInput"
+        android:id="@+id/brewTimeInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="brew calories"
+        android:hint="brew time in seconds"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/brewCaloriesLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toEndOf="@+id/brewCaloriesLabel"
-        app:layout_constraintTop_toTopOf="@+id/brewCaloriesLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/brewTimeLabel"
+        app:layout_constraintStart_toEndOf="@+id/brewTimeLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewGramsCoffeeInput"
+        app:layout_constraintTop_toTopOf="@+id/brewTimeLabel"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/brewCaloriesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brew_calories_label"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/brewRatingLabel"
+        app:layout_constraintEnd_toEndOf="@+id/brewGramsCoffeeLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brewGramsCoffeeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brewGramsCoffeeLabel" />
+
+    <TextView
+        android:id="@+id/brewTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brew_time_label"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/brewGramsCoffeeLabel"
+        app:layout_constraintEnd_toEndOf="@+id/coffeeNameLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/coffeeNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeNameLabel" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewRatingInput"
@@ -207,26 +155,96 @@
         android:hint="brew rating"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/brewRatingLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toEndOf="@+id/brewRatingLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewCommentInput"
         app:layout_constraintTop_toTopOf="@+id/brewRatingLabel"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/brewCommentInput"
-        android:layout_width="178dp"
-        android:layout_height="67dp"
-        android:hint="brew Comment"
-        android:inputType="textMultiLine"
-        android:minLines="2"
+    <TextView
+        android:id="@+id/brewGramsCoffeeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brew_grams_coffee_label"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/brewCommentLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.669"
-        app:layout_constraintStart_toEndOf="@+id/brewCommentLabel"
-        app:layout_constraintTop_toTopOf="@+id/brewCommentLabel"
+        app:layout_constraintBottom_toTopOf="@+id/brewCaloriesLabel"
+        app:layout_constraintEnd_toEndOf="@+id/brewTimeLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brewTimeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brewTimeLabel" />
+
+    <TextView
+        android:id="@+id/brewRatingLabel"
+        android:layout_width="47dp"
+        android:layout_height="24dp"
+        android:text="@string/brew_rating_label"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/brewCommentLabel"
+        app:layout_constraintEnd_toEndOf="@+id/brewCaloriesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brewCaloriesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brewCaloriesLabel" />
+
+    <TextView
+        android:id="@+id/brewMethodLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brew_method_label"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/coffeeNameLabel"
+        app:layout_constraintEnd_toEndOf="@+id/brewDateLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brewDateLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brewDateLabel" />
+
+    <TextView
+        android:id="@+id/brewCommentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="@string/brew_comment_label"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/brewRatingLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brewRatingLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brewRatingLabel" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/brewMethodInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="brew method"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewMethodLabel"
+        app:layout_constraintStart_toEndOf="@+id/brewMethodLabel"
+        app:layout_constraintStart_toStartOf="@+id/brewCoffeeNameInput"
+        app:layout_constraintTop_toTopOf="@+id/brewMethodLabel"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnClearBrewInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_clear_brew_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSubmitBrewInput"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brewCommentInput"
+        app:layout_constraintVertical_bias="0.703" />
+
+    <Button
+        android:id="@+id/btnSubmitBrewInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_submit_brew_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnClearBrewInput"
+        app:layout_constraintTop_toBottomOf="@+id/brewCommentInput"
+        app:layout_constraintVertical_bias="0.703" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
