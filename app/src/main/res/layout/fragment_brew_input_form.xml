@@ -130,10 +130,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/brewDateLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toEndOf="@+id/brewDateLabel"
         app:layout_constraintTop_toTopOf="@+id/brewDateLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewMethodInput"
@@ -146,7 +146,7 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toEndOf="@+id/brewMethodLabel"
         app:layout_constraintTop_toTopOf="@+id/brewMethodLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewCoffeeNameInput"
@@ -159,7 +159,7 @@
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toEndOf="@+id/coffeeNameLabel"
         app:layout_constraintTop_toTopOf="@+id/coffeeNameLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewTimeInput"
@@ -172,7 +172,7 @@
         app:layout_constraintHorizontal_bias="0.654"
         app:layout_constraintStart_toEndOf="@+id/brewTimeLabel"
         app:layout_constraintTop_toTopOf="@+id/brewTimeLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewGramsCoffeeInput"
@@ -185,7 +185,7 @@
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toEndOf="@+id/brewGramsCoffeeLabel"
         app:layout_constraintTop_toTopOf="@+id/brewGramsCoffeeLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewCaloriesInput"
@@ -198,7 +198,7 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toEndOf="@+id/brewCaloriesLabel"
         app:layout_constraintTop_toTopOf="@+id/brewCaloriesLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewRatingInput"
@@ -211,23 +211,22 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toEndOf="@+id/brewRatingLabel"
         app:layout_constraintTop_toTopOf="@+id/brewRatingLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewCommentInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="67dp"
         android:hint="brew Comment"
-        android:inputType="textImeMultiLine"
-        android:lines="4"
+        android:inputType="textMultiLine"
         android:minLines="2"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/brewCommentLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.669"
         app:layout_constraintStart_toEndOf="@+id/brewCommentLabel"
         app:layout_constraintTop_toTopOf="@+id/brewCommentLabel"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
