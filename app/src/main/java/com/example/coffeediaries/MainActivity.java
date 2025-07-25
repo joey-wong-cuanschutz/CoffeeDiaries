@@ -13,13 +13,19 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.coffeediaries.databinding.ActivityMainBinding;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private AppDatabase db;
+    // all coffee brews will be stored in a list from the db query
+    private List<CoffeeRecordsEntity> brewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // fab swap with fragment to form
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null)
                         .setAnchorView(R.id.fab).show();
@@ -48,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // create db - if the db does not exist it will be created - code located in AppDatabase.class file
+        db = AppDatabase.getInstance(getApplicationContext());
     }
 
     @Override
@@ -62,5 +72,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    // define a method to load the data from the db
+    public void loadAllData() {
+        brewList.clear();
+        List<CoffeeRecordsEntity> newBrewList = db.coffeeRecordDao().getAll();
+        brewList.addAll(newBrewList);
+    }
+
+    // add a new coffee brew record to the db
+    public void addBrew(CoffeeRecordsEntity coffeeRecordsEntity) {
+        long id = db.coffeeRecordDao().insertRecord(coffeeRecordsEntity);
     }
 }

@@ -85,6 +85,7 @@ public class CoffeeRecordsEntity {
     }
 
 //    setters
+    public void setId(int id) { this.id = id; }
     public void setBrewDate(String brewDate) {
         this.brewDate = brewDate;
     }

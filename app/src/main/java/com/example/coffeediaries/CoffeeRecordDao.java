@@ -17,15 +17,17 @@ public interface CoffeeRecordDao {
 
 //    insert new record
     @Insert
-    void insertNewRecord(CoffeeRecordsEntity coffeeRecordsEntity);
+    public long insertRecord(CoffeeRecordsEntity coffeeRecordsEntity);
 
 //    delete record
     @Delete
-    void deleteRecord(CoffeeRecordsEntity coffeeRecordsEntity);
+    public void deleteRecord(CoffeeRecordsEntity coffeeRecordsEntity);
 
 //    update record
     @Update
-    void updateRecord(CoffeeRecordsEntity coffeeRecordsEntity);
+    public void updateRecord(CoffeeRecordsEntity coffeeRecordsEntity);
 
 //    select 1 record by id
+    @Query("SELECT * FROM CoffeeRecordsEntity WHERE id = :recordId LIMIT 1" )
+    CoffeeRecordsEntity findByRecordId(int recordId);
 }

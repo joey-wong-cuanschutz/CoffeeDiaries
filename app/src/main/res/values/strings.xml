@@ -10,4 +10,16 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Favorite Brews</string>
     <string name="menu_slideshow">Metrics</string>
+
+<!--  fragment for brew input  -->
+    <string name="brew_input_header">Brew Input</string>
+    <string name="brew_date_label">Date</string>
+    <string name="brew_method_label">Method</string>
+    <string name="brew_name_label">Coffee Name</string>
+    <string name="brew_time_label">Brew Time</string>
+    <string name="brew_grams_coffee_label">Grams of Coffee</string>
+    <string name="brew_calories_label">Calories</string>
+    <string name="brew_rating_label">Rating</string>
+    <string name="brew_comment_label">Comment</string>
+    <string name="brew_date_input_hint">mm/dd/yyy</string>
 </resources>
