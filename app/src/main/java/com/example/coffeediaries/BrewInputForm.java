@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BrewInputForm#newInstance} factory method to
@@ -63,7 +65,14 @@ public class BrewInputForm extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_brew_input_form, container, false);
 
-        // Will add the clear button logic in a little bit.
+        // Calls a method to clear all of the form fields upon clicking the clear button
+        view.findViewById(R.id.btnClearBrewInput).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear all input fields
+                clearAllFields(view);
+            }
+        });
         
         // Sets up the submit button so it navigates back to the previous screen after submission. 
         // We still need to add the logic for saving the data to the Room database.
@@ -76,5 +85,26 @@ public class BrewInputForm extends Fragment {
         });
         
         return view;
+    }
+
+    // Actual function to handle clearing all of the form fields
+    private void clearAllFields(View view) {
+        TextInputEditText brewDateInput = view.findViewById(R.id.brewDateInput);
+        TextInputEditText brewMethodInput = view.findViewById(R.id.brewMethodInput);
+        TextInputEditText brewCoffeeNameInput = view.findViewById(R.id.brewCoffeeNameInput);
+        TextInputEditText brewTimeInput = view.findViewById(R.id.brewTimeInput);
+        TextInputEditText brewGramsCoffeeInput = view.findViewById(R.id.brewGramsCoffeeInput);
+        TextInputEditText brewCaloriesInput = view.findViewById(R.id.brewCaloriesInput);
+        TextInputEditText brewRatingInput = view.findViewById(R.id.brewRatingInput);
+        TextInputEditText brewCommentInput = view.findViewById(R.id.brewCommentInput);
+
+        if (brewDateInput != null) brewDateInput.setText("");
+        if (brewMethodInput != null) brewMethodInput.setText("");
+        if (brewCoffeeNameInput != null) brewCoffeeNameInput.setText("");
+        if (brewTimeInput != null) brewTimeInput.setText("");
+        if (brewGramsCoffeeInput != null) brewGramsCoffeeInput.setText("");
+        if (brewCaloriesInput != null) brewCaloriesInput.setText("");
+        if (brewRatingInput != null) brewRatingInput.setText("");
+        if (brewCommentInput != null) brewCommentInput.setText("");
     }
 }
