@@ -1,13 +1,16 @@
 package com.example.coffeediaries;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -65,6 +68,9 @@ public class BrewInputForm extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_brew_input_form, container, false);
 
+        // Settings up the touch listener so we can detect specific touch events
+        setupTouchListener(view);
+
         // Calls a method to clear all of the form fields upon clicking the clear button
         view.findViewById(R.id.btnClearBrewInput).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,5 +112,37 @@ public class BrewInputForm extends Fragment {
         if (brewCaloriesInput != null) brewCaloriesInput.setText("");
         if (brewRatingInput != null) brewRatingInput.setText("");
         if (brewCommentInput != null) brewCommentInput.setText("");
+    }
+
+    // Function to set up the touch listener for the fragment view
+    // Calls the clearFocusAndHideKeyboard method when a touch event occurs
+    private void setupTouchListener(View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    // Clears focus from all input fields and hide keyboard
+                    clearFocusAndHideKeyboard(view);
+                }
+                return false;
+            }
+        });
+    }
+
+    // Actual method to clear the focus from an input field and hide the keyboard
+    private void clearFocusAndHideKeyboard(View view) {
+        // Clears focus
+        View currentFocus = getActivity().getCurrentFocus();
+        if (currentFocus != null) {
+            currentFocus.clearFocus();
+        }
+
+        // Hides the keyboard
+        if (getActivity() != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null && currentFocus != null) {
+                imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+            }
+        }
     }
 }
