@@ -68,7 +68,7 @@ public class BrewInputForm extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_brew_input_form, container, false);
 
-        // Settings up the touch listener so we can detect specific touch events
+        // Setting up the touch listener so we can detect specific touch events
         setupTouchListener(view);
 
         // Calls a method to clear all of the form fields upon clicking the clear button
