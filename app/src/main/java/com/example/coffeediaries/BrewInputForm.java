@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BrewInputForm#newInstance} factory method to
@@ -68,6 +72,9 @@ public class BrewInputForm extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_brew_input_form, container, false);
 
+        // Auto-fills the date field with current date
+        setCurrentDate(view);
+
         // Setting up the touch listener so we can detect specific touch events
         setupTouchListener(view);
 
@@ -93,6 +100,16 @@ public class BrewInputForm extends Fragment {
         return view;
     }
 
+    // Function to set the date field to  in MM/dd/yyyy format
+    private void setCurrentDate(View view) {
+        TextInputEditText brewDateInput = view.findViewById(R.id.brewDateInput);
+        if (brewDateInput != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+            String currentDate = dateFormat.format(new Date());
+            brewDateInput.setText(currentDate);
+        }
+    }
+
     // Actual function to handle clearing all of the form fields
     private void clearAllFields(View view) {
         TextInputEditText brewDateInput = view.findViewById(R.id.brewDateInput);
@@ -104,7 +121,13 @@ public class BrewInputForm extends Fragment {
         TextInputEditText brewRatingInput = view.findViewById(R.id.brewRatingInput);
         TextInputEditText brewCommentInput = view.findViewById(R.id.brewCommentInput);
 
-        if (brewDateInput != null) brewDateInput.setText("");
+        // Reset date to current date instead of clearing it
+        if (brewDateInput != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+            String currentDate = dateFormat.format(new Date());
+            brewDateInput.setText(currentDate);
+        }
+        // Clear all other fields
         if (brewMethodInput != null) brewMethodInput.setText("");
         if (brewCoffeeNameInput != null) brewCoffeeNameInput.setText("");
         if (brewTimeInput != null) brewTimeInput.setText("");
