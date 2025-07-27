@@ -22,4 +22,10 @@
         android:name="com.example.coffeediaries.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_brew_input"
+        android:name="com.example.coffeediaries.BrewInputForm"
+        android:label="@string/brew_input_header"
+        tools:layout="@layout/fragment_brew_input_form" />
 </navigation>

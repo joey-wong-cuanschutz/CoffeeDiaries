@@ -38,10 +38,9 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // fab swap with fragment to form
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
+                // Navigates to the BrewInputForm fragment
+                NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
+                navController.navigate(R.id.nav_brew_input);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -55,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // Adds the destination change listener to hide or show the FAB
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.nav_brew_input) {
+                binding.appBarMain.fab.hide();
+            } else {
+                binding.appBarMain.fab.show();
+            }
+        });
 
         // create db - if the db does not exist it will be created - code located in AppDatabase.class file
         db = AppDatabase.getInstance(getApplicationContext());

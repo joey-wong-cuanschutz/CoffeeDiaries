@@ -3,6 +3,8 @@ package com.example.coffeediaries;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +61,20 @@ public class BrewInputForm extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_brew_input_form, container, false);
+        View view = inflater.inflate(R.layout.fragment_brew_input_form, container, false);
+
+        // Will add the clear button logic in a little bit.
+        
+        // Sets up the submit button so it navigates back to the previous screen after submission. 
+        // We still need to add the logic for saving the data to the Room database.
+        view.findViewById(R.id.btnSubmitBrewInput).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(v);
+                navController.popBackStack();
+            }
+        });
+        
+        return view;
     }
 }
