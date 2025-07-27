@@ -1,6 +1,7 @@
 package com.example.coffeediaries;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadAllData() {
         brewList.clear();
         List<CoffeeRecordsEntity> newBrewList = db.coffeeRecordDao().getAll();
+        Log.i("input-result", newBrewList.toString());
         brewList.addAll(newBrewList);
     }
 

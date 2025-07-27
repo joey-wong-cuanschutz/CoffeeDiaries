@@ -26,14 +26,6 @@ import java.util.Locale;
  */
 public class BrewInputForm extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public BrewInputForm() {
         // Required empty public constructor
@@ -41,7 +33,7 @@ public class BrewInputForm extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * This fragment uses the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
@@ -51,19 +43,12 @@ public class BrewInputForm extends Fragment {
     public static BrewInputForm newInstance(String param1, String param2) {
         BrewInputForm fragment = new BrewInputForm();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -92,6 +77,32 @@ public class BrewInputForm extends Fragment {
         view.findViewById(R.id.btnSubmitBrewInput).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // extract text and save to the db
+                TextInputEditText brewDateEditText = view.findViewById(R.id.brewDateInput);
+                TextInputEditText brewMethodEditText = view.findViewById(R.id.brewMethodInput);
+                TextInputEditText brewCoffeeNameEditText = view.findViewById(R.id.brewCoffeeNameInput);
+                TextInputEditText brewTimeEditText = view.findViewById(R.id.brewTimeInput);
+                TextInputEditText brewGramsCoffeeEditText = view.findViewById(R.id.brewGramsCoffeeInput);
+                TextInputEditText brewCaloriesEditText = view.findViewById(R.id.brewCaloriesInput);
+                TextInputEditText brewRatingEditText = view.findViewById(R.id.brewRatingInput);
+                TextInputEditText brewCommentEditText = view.findViewById(R.id.brewCommentInput);
+                // convert the TextInputEditText to String datatype
+                String brewDateInput = (brewDateEditText != null) ? brewDateEditText.getText().toString() : "";
+                String brewMethodInput = (brewMethodEditText != null) ? brewMethodEditText.getText().toString() : "";
+                String brewCoffeeNameInput = (brewCoffeeNameEditText != null) ? brewCoffeeNameEditText.getText().toString() : "";
+                String brewTimeInput = (brewTimeEditText != null) ? brewTimeEditText.getText().toString() : "";
+                // parse the string to double value to save to the db
+                double brewGramsCoffeeInput = (brewGramsCoffeeEditText != null) ?Double.parseDouble(brewGramsCoffeeEditText.getText().toString()) : 0;
+                double brewCaloriesInput = (brewCaloriesEditText != null) ? Double.parseDouble(brewCaloriesEditText.getText().toString()) : 0;
+                double brewRatingInput = (brewRatingEditText != null) ? Double.parseDouble(brewRatingEditText.getText().toString()) : 0;
+                String brewCommentInput = (brewCommentEditText != null) ? brewCommentEditText.getText().toString() : "";
+
+                CoffeeRecordsEntity coffeeRecordsEntity = new CoffeeRecordsEntity(brewDateInput, brewMethodInput, brewCoffeeNameInput, brewTimeInput, brewGramsCoffeeInput, brewCaloriesInput, brewRatingInput, brewCommentInput);
+                MainActivity mainActivity = (MainActivity) getActivity();
+                assert mainActivity != null;
+                mainActivity.addBrew(coffeeRecordsEntity);
+
+                // save data into the db before navigating back to the main activity page
                 NavController navController = Navigation.findNavController(v);
                 navController.popBackStack();
             }
