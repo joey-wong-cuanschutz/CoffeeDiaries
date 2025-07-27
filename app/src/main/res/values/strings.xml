@@ -21,7 +21,7 @@
     <string name="brew_calories_label">Calories</string>
     <string name="brew_rating_label">Rating</string>
     <string name="brew_comment_label">Comment</string>
-    <string name="brew_date_input_hint">mm/dd/yyy</string>
+    <string name="brew_date_input_hint">mm/dd/yyyy</string>
     <string name="btn_clear_brew_input">Clear</string>
     <string name="btn_submit_brew_input">Submit</string>
 </resources>
