@@ -38,4 +38,12 @@ public interface CoffeeRecordDao {
 //    select 1 record by id
     @Query("SELECT * FROM CoffeeRecordsEntity WHERE id = :recordId LIMIT 1" )
     CoffeeRecordsEntity findByRecordId(int recordId);
+
+    // Counts all recoreds for a specific date
+    @Query("SELECT COUNT(*) FROM CoffeeRecordsEntity WHERE brewDate = :date")
+    int getCountByDate(String date);
+
+    // Counts all records between two dates (including the startDate and endDate)
+    @Query("SELECT COUNT(*) FROM CoffeeRecordsEntity WHERE brewDate BETWEEN :startDate AND :endDate")
+    int getCountBetweenDates(String startDate, String endDate);
 }
