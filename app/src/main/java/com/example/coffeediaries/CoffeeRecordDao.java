@@ -1,5 +1,6 @@
 package com.example.coffeediaries;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -14,6 +15,9 @@ public interface CoffeeRecordDao {
 //    get all coffee records
     @Query("SELECT * FROM CoffeeRecordsEntity")
     List<CoffeeRecordsEntity> getAll();
+
+    @Query("SELECT * FROM CoffeeRecordsEntity")
+    LiveData<List<CoffeeRecordsEntity>> getAllLive();
 
 //    insert new record
     @Insert

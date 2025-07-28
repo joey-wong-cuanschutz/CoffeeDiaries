@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 // Navigates to the BrewInputForm fragment
                 NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
                 navController.navigate(R.id.nav_brew_input);
+
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Had to initialize the brewList or it will crash the app thanks to the loadAllData function
         brewList = new ArrayList<>();
+
     }
 
     @Override
@@ -89,15 +92,25 @@ public class MainActivity extends AppCompatActivity {
 
     // define a method to load the data from the db
     public void loadAllData() {
-        brewList.clear();
+        try {
+            brewList.clear();
+        } catch (RuntimeException e) {
+            Toast.makeText(this, "Unable to clear data", Toast.LENGTH_SHORT).show();
+            throw new RuntimeException(e);
+        }
+
+        Log.i("loadAllData", "cleared list");
         List<CoffeeRecordsEntity> newBrewList = db.coffeeRecordDao().getAll();
-        Log.i("input-result", newBrewList.toString());
+        Log.i("loadAllData", "queried db");
+        Log.i("loadAllData", newBrewList.toString());
         brewList.addAll(newBrewList);
     }
 
     // add a new coffee brew record to the db
     public void addBrew(CoffeeRecordsEntity coffeeRecordsEntity) {
         long id = db.coffeeRecordDao().insertRecord(coffeeRecordsEntity);
+        Log.i("insertion-id", String.valueOf(id));
+        loadAllData();
     }
 
     // Grabs all brews from the database for the RecyclerView
