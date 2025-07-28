@@ -131,4 +131,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return new ArrayList<>();
     }
+
+    // Clears all data from the database
+    public void clearAllData() {
+        if (db != null) {
+            db.coffeeRecordDao().deleteAll();
+            brewList.clear();
+            Log.i("clearAllData", "All data cleared from database");
+        }
+    }
 }

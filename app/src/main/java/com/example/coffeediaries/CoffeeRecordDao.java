@@ -27,6 +27,10 @@ public interface CoffeeRecordDao {
     @Delete
     public void deleteRecord(CoffeeRecordsEntity coffeeRecordsEntity);
 
+    // Clears the database of all coffee records
+    @Query("DELETE FROM CoffeeRecordsEntity")
+    public void deleteAll();
+
 //    update record
     @Update
     public void updateRecord(CoffeeRecordsEntity coffeeRecordsEntity);
