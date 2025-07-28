@@ -31,4 +31,11 @@
     <string name="brew_time_input_hint">Ex. 4 min</string>
     <string name="brew_rating_input_hint">Ex. 9/10</string>
     <string name="brew_method_input_hint">Ex. Cold Press</string>
+    <string name="recyclerViewDate">10/01/2022</string>
+    <string name="recyclerViewCoffeeName">Folgers</string>
+    <string name="recyclerViewBrewMethod">Chemex</string>
+    <string name="recyclerViewBrewRating">5</string>
+    <string name="recyclerViewCoffeeNameLabel">Coffee Name:</string>
+    <string name="recyclerViewBrewMethodLabel">Brew Method:</string>
+    <string name="recyclerViewBrewRatingLabel">Rating:</string>
 </resources>
