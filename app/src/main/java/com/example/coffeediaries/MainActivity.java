@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Adds the destination change listener to hide or show the FAB
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.nav_brew_input) {
+            if (destination.getId() == R.id.nav_brew_input || destination.getId() == R.id.nav_settings) {
                 binding.appBarMain.fab.hide();
             } else {
                 binding.appBarMain.fab.show();
@@ -81,6 +81,17 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            // Navigate to settings fragment
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+            navController.navigate(R.id.nav_settings);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
