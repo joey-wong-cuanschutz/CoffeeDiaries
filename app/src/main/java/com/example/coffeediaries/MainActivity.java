@@ -99,4 +99,12 @@ public class MainActivity extends AppCompatActivity {
     public void addBrew(CoffeeRecordsEntity coffeeRecordsEntity) {
         long id = db.coffeeRecordDao().insertRecord(coffeeRecordsEntity);
     }
+
+    // Grabs all brews from the database for the RecyclerView
+    public List<CoffeeRecordsEntity> getAllBrews() {
+        if (db != null) {
+            return db.coffeeRecordDao().getAll();
+        }
+        return new ArrayList<>();
+    }
 }
