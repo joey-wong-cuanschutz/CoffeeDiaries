@@ -18,6 +18,7 @@ import androidx.room.Room;
 
 import com.example.coffeediaries.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         // create db - if the db does not exist it will be created - code located in AppDatabase.class file
         db = AppDatabase.getInstance(getApplicationContext());
+
+        // Had to initialize the brewList or it will crash the app thanks to the loadAllData function
+        brewList = new ArrayList<>();
     }
 
     @Override

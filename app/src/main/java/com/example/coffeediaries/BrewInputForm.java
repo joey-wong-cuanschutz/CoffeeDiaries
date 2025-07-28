@@ -86,25 +86,35 @@ public class BrewInputForm extends Fragment {
                 TextInputEditText brewCaloriesEditText = view.findViewById(R.id.brewCaloriesInput);
                 TextInputEditText brewRatingEditText = view.findViewById(R.id.brewRatingInput);
                 TextInputEditText brewCommentEditText = view.findViewById(R.id.brewCommentInput);
-                // convert the TextInputEditText to String datatype
-                String brewDateInput = (brewDateEditText != null) ? brewDateEditText.getText().toString() : "";
-                String brewMethodInput = (brewMethodEditText != null) ? brewMethodEditText.getText().toString() : "";
-                String brewCoffeeNameInput = (brewCoffeeNameEditText != null) ? brewCoffeeNameEditText.getText().toString() : "";
-                String brewTimeInput = (brewTimeEditText != null) ? brewTimeEditText.getText().toString() : "";
-                // parse the string to double value to save to the db
-                double brewGramsCoffeeInput = (brewGramsCoffeeEditText != null) ?Double.parseDouble(brewGramsCoffeeEditText.getText().toString()) : 0;
-                double brewCaloriesInput = (brewCaloriesEditText != null) ? Double.parseDouble(brewCaloriesEditText.getText().toString()) : 0;
-                double brewRatingInput = (brewRatingEditText != null) ? Double.parseDouble(brewRatingEditText.getText().toString()) : 0;
-                String brewCommentInput = (brewCommentEditText != null) ? brewCommentEditText.getText().toString() : "";
+                
+                // Convert the TextInputEditText to String datatype
+                // Using the getStringValue method to safely extract string values
+                String brewDateInput = getStringValue(brewDateEditText, "Unknown");
+                String brewMethodInput = getStringValue(brewMethodEditText, "Unknown");
+                String brewCoffeeNameInput = getStringValue(brewCoffeeNameEditText, "Unknown");
+                String brewTimeInput = getStringValue(brewTimeEditText, "Unknown");
+                
+                // Safe numeric parsing with default value of 0 for all numeric fields
+                double brewGramsCoffeeInput = getDoubleValue(brewGramsCoffeeEditText, 0.0);
+                double brewCaloriesInput = getDoubleValue(brewCaloriesEditText, 0.0);
+                double brewRatingInput = getDoubleValue(brewRatingEditText, 0.0);
+                String brewCommentInput = getStringValue(brewCommentEditText, "Unknown");
 
                 CoffeeRecordsEntity coffeeRecordsEntity = new CoffeeRecordsEntity(brewDateInput, brewMethodInput, brewCoffeeNameInput, brewTimeInput, brewGramsCoffeeInput, brewCaloriesInput, brewRatingInput, brewCommentInput);
-                MainActivity mainActivity = (MainActivity) getActivity();
-                assert mainActivity != null;
-                mainActivity.addBrew(coffeeRecordsEntity);
-
-                // save data into the db before navigating back to the main activity page
-                NavController navController = Navigation.findNavController(v);
-                navController.popBackStack();
+                
+                // Using a try-catch prevent the app from crashing if there are errors
+                try {
+                    MainActivity mainActivity = (MainActivity) getActivity();
+                    if (mainActivity != null) {
+                        mainActivity.addBrew(coffeeRecordsEntity);
+                        
+                        // save data into the db before navigating back to the main activity page
+                        NavController navController = Navigation.findNavController(v);
+                        navController.popBackStack();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         
@@ -178,5 +188,35 @@ public class BrewInputForm extends Fragment {
                 imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
             }
         }
+    }
+    
+    // Function to safely extract string values from appropriate fields
+    private String getStringValue(TextInputEditText editText, String defaultValue) {
+        try {
+            if (editText != null && editText.getText() != null) {
+                String value = editText.getText().toString().trim();
+                return value.isEmpty() ? defaultValue : value;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return defaultValue;
+    }
+    
+    // Function to safely extract double values from appropriate fields
+    private double getDoubleValue(TextInputEditText editText, double defaultValue) {
+        try {
+            if (editText != null && editText.getText() != null) {
+                String value = editText.getText().toString().trim();
+                if (value.isEmpty()) {
+                    return defaultValue;
+                }
+                return Double.parseDouble(value);
+            }
+        } catch (NumberFormatException | NullPointerException e) {
+            // Log the error for debugging but don't crash
+            e.printStackTrace();
+        }
+        return defaultValue;
     }
 }
