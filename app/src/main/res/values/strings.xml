@@ -12,7 +12,7 @@
     <string name="menu_slideshow">Metrics</string>
 
 <!--  fragment for brew input  -->
-    <string name="brew_input_header">Brew Input</string>
+    <string name="brew_input_header">Add Brew</string>
     <string name="brew_date_label">Date</string>
     <string name="brew_method_label">Method</string>
     <string name="brew_name_label">Coffee Name</string>
@@ -28,8 +28,8 @@
     <string name="brew_comment_input_hint">Ex. Tasted like sweet cherries</string>
     <string name="brew_calories_input_hint">Ex. 2</string>
     <string name="brew_grams_input_hint">Ex. 10</string>
-    <string name="brew_time_input_hint">Ex. 4:00</string>
-    <string name="brew_rating_input_hint">Ex. 9</string>
+    <string name="brew_time_input_hint">Ex. 4.5</string>
+    <string name="brew_rating_input_hint">Ex. 5</string>
     <string name="brew_method_input_hint">Ex. Cold Press</string>
     <string name="recyclerViewDate">10/01/2022</string>
     <string name="recyclerViewCoffeeName">Folgers</string>
