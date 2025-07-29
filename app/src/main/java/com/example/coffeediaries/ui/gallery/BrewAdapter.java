@@ -67,12 +67,14 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
             String coffeeName = brew.getCoffeeName();
             tvCoffeeName.setText(coffeeName.equals("Unknown") ? "Unnamed Coffee" : coffeeName);
 
-            // Sets date AND time
+            // Sets date and time
             String brewDate = brew.getBrewDate();
             String brewTimeOfDay = brew.getBrewTimeOfDay();
             if (!brewDate.equals("Unknown")) {
                 if (brewTimeOfDay != null && !brewTimeOfDay.equals("Unknown")) {
-                    tvBrewDate.setText(brewDate + " " + brewTimeOfDay);
+                    // Format time for display (remove seconds if present)
+                    String displayTime = formatTimeForDisplay(brewTimeOfDay);
+                    tvBrewDate.setText(brewDate + " " + displayTime);
                 } else {
                     tvBrewDate.setText(brewDate);
                 }
@@ -124,6 +126,17 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
             } else {
                 tvComment.setVisibility(View.GONE);
             }
+        }
+
+        // Helper method to format time for display (removes seconds)
+        private String formatTimeForDisplay(String timeWithSeconds) {
+            if (timeWithSeconds != null && timeWithSeconds.length() >= 5) {
+                // If time has seconds (HH:mm:ss), return only HH:mm
+                if (timeWithSeconds.length() > 5 && timeWithSeconds.charAt(5) == ':') {
+                    return timeWithSeconds.substring(0, 5); // Extract HH:mm
+                }
+            }
+            return timeWithSeconds; // Return as-is if it's already HH:mm format
         }
     }
 }
