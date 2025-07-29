@@ -132,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
         return new ArrayList<>();
     }
 
+    public List<CoffeeRecordsEntity> getAllRatingOrder() {
+        if (db != null) {
+            return db.coffeeRecordDao().getAllRatingOrder();
+        }
+        return new ArrayList<>();
+    }
+
     // Clears all data from the database
     public void clearAllData() {
         if (db != null) {

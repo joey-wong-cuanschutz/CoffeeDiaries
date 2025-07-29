@@ -19,6 +19,10 @@ public interface CoffeeRecordDao {
     @Query("SELECT * FROM CoffeeRecordsEntity")
     LiveData<List<CoffeeRecordsEntity>> getAllLive();
 
+    // select all records but order by the rating
+    @Query("SELECT * FROM CoffeeRecordsEntity ORDER BY rating ASC")
+    List<CoffeeRecordsEntity> getAllRatingOrder();
+
 //    insert new record
     @Insert
     public long insertRecord(CoffeeRecordsEntity coffeeRecordsEntity);
