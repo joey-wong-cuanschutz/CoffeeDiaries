@@ -89,16 +89,17 @@ public class BrewInputForm extends Fragment {
                 
                 // Convert the TextInputEditText to String datatype
                 // Using the getStringValue method to safely extract string values
-                String brewDateInput = getStringValue(brewDateEditText, "Unknown");
-                String brewMethodInput = getStringValue(brewMethodEditText, "Unknown");
-                String brewCoffeeNameInput = getStringValue(brewCoffeeNameEditText, "Unknown");
-                String brewTimeInput = getStringValue(brewTimeEditText, "Unknown");
+                String unknown = getString(R.string.unknown);
+                String brewDateInput = getStringValue(brewDateEditText, unknown);
+                String brewMethodInput = getStringValue(brewMethodEditText, unknown);
+                String brewCoffeeNameInput = getStringValue(brewCoffeeNameEditText, unknown);
+                String brewTimeInput = getStringValue(brewTimeEditText, unknown);
                 
                 // Safe numeric parsing with default value of 0 for all numeric fields
                 double brewGramsCoffeeInput = getDoubleValue(brewGramsCoffeeEditText, 0.0);
                 double brewCaloriesInput = getDoubleValue(brewCaloriesEditText, 0.0);
                 double brewRatingInput = getDoubleValue(brewRatingEditText, 0.0);
-                String brewCommentInput = getStringValue(brewCommentEditText, "Unknown");
+                String brewCommentInput = getStringValue(brewCommentEditText, unknown);
 
                 // Generates the current time with seconds for precise ordering
                 SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());

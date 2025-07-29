@@ -65,13 +65,18 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
         public void bind(CoffeeRecordsEntity brew) {
             // Sets coffee name
             String coffeeName = brew.getCoffeeName();
-            tvCoffeeName.setText(coffeeName.equals("Unknown") ? "Unnamed Coffee" : coffeeName);
+            String unknown = itemView.getContext().getString(R.string.unknown);
+            String unnamedCoffee = itemView.getContext().getString(R.string.unnamed_coffee);
+            String notAvailable = itemView.getContext().getString(R.string.not_available);
+            String notRated = itemView.getContext().getString(R.string.not_rated);
+            
+            tvCoffeeName.setText(coffeeName.equals(unknown) ? unnamedCoffee : coffeeName);
 
             // Sets date and time
             String brewDate = brew.getBrewDate();
             String brewTimeOfDay = brew.getBrewTimeOfDay();
-            if (!brewDate.equals("Unknown")) {
-                if (brewTimeOfDay != null && !brewTimeOfDay.equals("Unknown")) {
+            if (!brewDate.equals(unknown)) {
+                if (brewTimeOfDay != null && !brewTimeOfDay.equals(unknown)) {
                     // Format time for display (remove seconds if present)
                     String displayTime = formatTimeForDisplay(brewTimeOfDay);
                     tvBrewDate.setText(brewDate + " " + displayTime);
@@ -79,24 +84,24 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
                     tvBrewDate.setText(brewDate);
                 }
             } else {
-                tvBrewDate.setText("N/A");
+                tvBrewDate.setText(notAvailable);
             }
 
             // Sets rating
             double rating = brew.getRating();
             if (rating > 0) {
-                tvRating.setText("Rating: " + rating + "/5");
+                tvRating.setText(itemView.getContext().getString(R.string.rating_format, rating));
             } else {
-                tvRating.setText("Not rated");
+                tvRating.setText(notRated);
             }
 
             // Sets brew method
             String brewMethod = brew.getBrewMethod();
-            tvBrewMethod.setText(brewMethod.equals("Unknown") ? "N/A" : brewMethod);
+            tvBrewMethod.setText(brewMethod.equals(unknown) ? notAvailable : brewMethod);
 
             // Sets brew time
             String brewTime = brew.getBrewTime();
-            tvBrewTime.setText(brewTime.equals("Unknown") ? "N/A" : brewTime);
+            tvBrewTime.setText(brewTime.equals(unknown) ? notAvailable : brewTime);
 
             // Sets coffee amount
             double gramsCoffee = brew.getGramsCoffee();
@@ -107,7 +112,7 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
                     tvGramsCoffee.setText(String.valueOf(gramsCoffee));
                 }
             } else {
-                tvGramsCoffee.setText("N/A");
+                tvGramsCoffee.setText(notAvailable);
             }
 
             // Sets calories
@@ -115,12 +120,12 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
             if (calories > 0) {
                 tvCalories.setText(String.valueOf((int)calories));
             } else {
-                tvCalories.setText("N/A");
+                tvCalories.setText(notAvailable);
             }
 
             // Sets comment and hides if there is no comment
             String comment = brew.getComment();
-            if (comment != null && !comment.equals("Unknown") && !comment.trim().isEmpty()) {
+            if (comment != null && !comment.equals(unknown) && !comment.trim().isEmpty()) {
                 tvComment.setText(comment);
                 tvComment.setVisibility(View.VISIBLE);
             } else {

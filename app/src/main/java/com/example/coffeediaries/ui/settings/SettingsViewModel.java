@@ -10,7 +10,12 @@ public class SettingsViewModel extends ViewModel {
 
     public SettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Data Settings");
+        // This will be set by the fragment with proper string resource
+        mText.setValue("");
+    }
+
+    public void setText(String text) {
+        mText.setValue(text);
     }
 
     public LiveData<String> getText() {

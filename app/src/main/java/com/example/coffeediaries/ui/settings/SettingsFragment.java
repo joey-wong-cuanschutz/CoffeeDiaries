@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.coffeediaries.MainActivity;
+import com.example.coffeediaries.R;
 import com.example.coffeediaries.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
@@ -28,18 +29,20 @@ public class SettingsFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textSettings;
+        // Set the text from string resources
+        settingsViewModel.setText(getString(R.string.data_settings));
         settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         // Pops up with a dialog to confirm the user wants to clear all their data
         // Calls the clearAllData() method if the user confirms.
         binding.btnClearData.setOnClickListener(v -> {
             new AlertDialog.Builder(getContext())
-                    .setTitle("Clear All Data")
-                    .setMessage("Are you sure you want to delete all of your data? This cannot be undone...")
-                    .setPositiveButton("Clear Data", (dialog, which) -> {
+                    .setTitle(getString(R.string.clear_all_data_title))
+                    .setMessage(getString(R.string.clear_all_data_message))
+                    .setPositiveButton(getString(R.string.clear_data_button), (dialog, which) -> {
                         clearAllData();
                     })
-                    .setNegativeButton("Cancel", null)
+                    .setNegativeButton(getString(R.string.cancel_button), null)
                     .show();
         });
 
@@ -53,9 +56,9 @@ public class SettingsFragment extends Fragment {
             try {
                 // Clear all data from the database
                 mainActivity.clearAllData();
-                Toast.makeText(getContext(), "All data cleared", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.data_cleared_success), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(getContext(), "Error clearing data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.data_cleared_error), Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }

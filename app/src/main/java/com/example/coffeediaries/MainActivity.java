@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             brewList.clear();
         } catch (RuntimeException e) {
-            Toast.makeText(this, "Unable to clear data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.unable_to_clear_data), Toast.LENGTH_SHORT).show();
             throw new RuntimeException(e);
         }
 

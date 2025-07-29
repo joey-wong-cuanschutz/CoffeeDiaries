@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.coffeediaries.AppDatabase;
 import com.example.coffeediaries.MainActivity;
+import com.example.coffeediaries.R;
 import com.example.coffeediaries.databinding.FragmentSlideshowBinding;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +35,8 @@ public class SlideshowFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;
+        // Set the text from string resources
+        slideshowViewModel.setText(getString(R.string.frequency_metrics));
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         
         // Initializes the database
