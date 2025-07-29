@@ -23,6 +23,10 @@ public interface CoffeeRecordDao {
     @Query("SELECT * FROM CoffeeRecordsEntity ORDER BY rating ASC")
     List<CoffeeRecordsEntity> getAllRatingOrder();
 
+    // Selects all coffee records ordered by brew date in descending order
+    @Query("SELECT * FROM CoffeeRecordsEntity ORDER BY brewDate DESC")
+    List<CoffeeRecordsEntity> getAllByDateOrder();
+
 //    insert new record
     @Insert
     public long insertRecord(CoffeeRecordsEntity coffeeRecordsEntity);

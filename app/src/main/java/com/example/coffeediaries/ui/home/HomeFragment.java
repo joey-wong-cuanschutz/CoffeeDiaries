@@ -60,16 +60,13 @@ public class HomeFragment extends Fragment {
         if (getActivity() instanceof MainActivity) {
             MainActivity mainActivity = (MainActivity) getActivity();
             try {
-                // Gets all brews from the database
-                List<CoffeeRecordsEntity> allBrews = mainActivity.getAllBrews();
+                // Gets all brews from the database ordered by brew date (newest first)
+                List<CoffeeRecordsEntity> allBrews = mainActivity.getAllByDateOrder();
                 
                 if (allBrews != null && !allBrews.isEmpty()) {
                     // Shows RecyclerView and hides empty state
                     brewList.clear();
                     brewList.addAll(allBrews);
-                    
-                    // Shows newest entries first
-                    java.util.Collections.reverse(brewList);
                     
                     brewAdapter.updateBrewList(brewList);
                     recyclerView.setVisibility(View.VISIBLE);
