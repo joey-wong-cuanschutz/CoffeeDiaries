@@ -22,6 +22,9 @@ public class CoffeeRecordsEntity {
     @ColumnInfo(name = "brewTime")
     private String brewTime;
 
+    @ColumnInfo(name = "brewTimeOfDay")
+    private String brewTimeOfDay;
+
     @ColumnInfo(name = "gramsCoffee")
     private double gramsCoffee;
 
@@ -34,12 +37,13 @@ public class CoffeeRecordsEntity {
     @ColumnInfo(name = "comment")
     private String comment;
 
-    public CoffeeRecordsEntity(String brewDate, String brewMethod, String coffeeName, String brewTime, double gramsCoffee, double calories, double rating, String comment) {
+    public CoffeeRecordsEntity(String brewDate, String brewMethod, String coffeeName, String brewTime, String brewTimeOfDay, double gramsCoffee, double calories, double rating, String comment) {
         this.id = 0;
         this.brewDate = brewDate;
         this.brewMethod = brewMethod;
         this.coffeeName = coffeeName;
         this.brewTime = brewTime;
+        this.brewTimeOfDay = brewTimeOfDay;
         this.gramsCoffee = gramsCoffee;
         this.calories = calories;
         this.rating = rating;
@@ -66,6 +70,10 @@ public class CoffeeRecordsEntity {
 
     public String getBrewTime() {
         return brewTime;
+    }
+
+    public String getBrewTimeOfDay() {
+        return brewTimeOfDay;
     }
 
     public double getGramsCoffee() {
@@ -100,6 +108,10 @@ public class CoffeeRecordsEntity {
 
     public void setBrewTime(String brewTime) {
         this.brewTime = brewTime;
+    }
+
+    public void setBrewTimeOfDay(String brewTimeOfDay) {
+        this.brewTimeOfDay = brewTimeOfDay;
     }
 
     public void setGramsCoffee(double gramsCoffee) {

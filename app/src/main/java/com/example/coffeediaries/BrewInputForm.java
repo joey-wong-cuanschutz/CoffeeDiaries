@@ -100,7 +100,11 @@ public class BrewInputForm extends Fragment {
                 double brewRatingInput = getDoubleValue(brewRatingEditText, 0.0);
                 String brewCommentInput = getStringValue(brewCommentEditText, "Unknown");
 
-                CoffeeRecordsEntity coffeeRecordsEntity = new CoffeeRecordsEntity(brewDateInput, brewMethodInput, brewCoffeeNameInput, brewTimeInput, brewGramsCoffeeInput, brewCaloriesInput, brewRatingInput, brewCommentInput);
+                // Generates the current time
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                String currentTimeOfDay = timeFormat.format(new Date());
+
+                CoffeeRecordsEntity coffeeRecordsEntity = new CoffeeRecordsEntity(brewDateInput, brewMethodInput, brewCoffeeNameInput, brewTimeInput, currentTimeOfDay, brewGramsCoffeeInput, brewCaloriesInput, brewRatingInput, brewCommentInput);
                 
                 // Using a try-catch prevent the app from crashing if there are errors
                 try {

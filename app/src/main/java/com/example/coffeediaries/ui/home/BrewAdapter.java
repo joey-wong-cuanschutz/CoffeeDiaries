@@ -67,9 +67,18 @@ public class BrewAdapter extends RecyclerView.Adapter<BrewAdapter.BrewViewHolder
             String coffeeName = brew.getCoffeeName();
             tvCoffeeName.setText(coffeeName.equals("Unknown") ? "Unnamed Coffee" : coffeeName);
 
-            // Sets date
+            // Sets date and time
             String brewDate = brew.getBrewDate();
-            tvBrewDate.setText(brewDate.equals("Unknown") ? "N/A" : brewDate);
+            String brewTimeOfDay = brew.getBrewTimeOfDay();
+            if (!brewDate.equals("Unknown")) {
+                if (brewTimeOfDay != null && !brewTimeOfDay.equals("Unknown")) {
+                    tvBrewDate.setText(brewDate + " " + brewTimeOfDay);
+                } else {
+                    tvBrewDate.setText(brewDate);
+                }
+            } else {
+                tvBrewDate.setText("N/A");
+            }
 
             // Sets rating
             double rating = brew.getRating();
