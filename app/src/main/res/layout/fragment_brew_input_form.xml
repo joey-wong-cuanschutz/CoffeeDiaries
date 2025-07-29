@@ -102,6 +102,17 @@
         app:layout_constraintTop_toTopOf="@+id/brewCaloriesLabel"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/brewCaloriesUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="cal"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewCaloriesInput"
+        app:layout_constraintStart_toEndOf="@+id/brewCaloriesInput"
+        app:layout_constraintTop_toTopOf="@+id/brewCaloriesInput" />
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewGramsCoffeeInput"
         android:layout_width="wrap_content"
@@ -114,6 +125,17 @@
         app:layout_constraintTop_toTopOf="@+id/brewGramsCoffeeLabel"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/brewGramsUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="g"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewGramsCoffeeInput"
+        app:layout_constraintStart_toEndOf="@+id/brewGramsCoffeeInput"
+        app:layout_constraintTop_toTopOf="@+id/brewGramsCoffeeInput" />
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/brewTimeInput"
         android:layout_width="wrap_content"
@@ -125,6 +147,17 @@
         app:layout_constraintStart_toStartOf="@+id/brewGramsCoffeeInput"
         app:layout_constraintTop_toTopOf="@+id/brewTimeLabel"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/brewTimeUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="min"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewTimeInput"
+        app:layout_constraintStart_toEndOf="@+id/brewTimeInput"
+        app:layout_constraintTop_toTopOf="@+id/brewTimeInput" />
 
     <TextView
         android:id="@+id/brewCaloriesLabel"
@@ -161,6 +194,17 @@
         app:layout_constraintStart_toStartOf="@+id/brewCommentInput"
         app:layout_constraintTop_toTopOf="@+id/brewRatingLabel"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/brewRatingUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="/5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brewRatingInput"
+        app:layout_constraintStart_toEndOf="@+id/brewRatingInput"
+        app:layout_constraintTop_toTopOf="@+id/brewRatingInput" />
 
     <TextView
         android:id="@+id/brewGramsCoffeeLabel"
