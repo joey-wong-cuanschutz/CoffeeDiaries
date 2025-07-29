@@ -48,13 +48,14 @@ public class SlideshowFragment extends Fragment {
     private void loadMetrics() {
         Executors.newSingleThreadExecutor().execute(() -> {
             int todayCount = getTodayCount();
+            int weekCount = getWeekCount();
             int monthCount = getMonthCount();
 
             if (getActivity() != null) {
                 getActivity().runOnUiThread(() -> {
                     binding.textTodayCups.setText(todayCount + " cup(s) of coffee consumed");
+                    binding.textWeekCups.setText(weekCount + " cup(s) of coffee consumed");
                     binding.textMonthCups.setText(monthCount + " cup(s) of coffee consumed");
-                    binding.textWeekCups.setText("0 cup(s) of coffee consumed");
                 });
             }
         });
@@ -73,6 +74,24 @@ public class SlideshowFragment extends Fragment {
         Date firstDay = calendar.getTime();
         
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        Date lastDay = calendar.getTime();
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+        String firstDayStr = dateFormat.format(firstDay);
+        String lastDayStr = dateFormat.format(lastDay);
+        
+        return db.coffeeRecordDao().getCountBetweenDates(firstDayStr, lastDayStr);
+    }
+
+    private int getWeekCount() {
+        Calendar calendar = Calendar.getInstance();
+        
+        // Sets the start of the week using .getFirstDayOfWeek()
+        calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+        Date firstDay = calendar.getTime();
+        
+        // Sets the end of the week
+        calendar.add(Calendar.DAY_OF_WEEK, 6);
         Date lastDay = calendar.getTime();
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
